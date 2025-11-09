@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Joy World Home of Beauty</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --primary-light: #f6e9f0;
+        --white: #ffffff;
+        --primary-medium: #d6a7c0;
+        --primary-dark: #a86ba3;
+        --dark: #333333;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: var(--dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+        background-color: #f9f9f9;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+      }
+
+      /* Header & Navigation */
+      .navbar {
+        background-color: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 15px 0;
+        transition: var(--transition);
+      }
+
+      .navbar-brand {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: var(--primary-dark) !important;
+      }
+
+      .nav-link {
+        font-weight: 500;
+        color: var(--dark) !important;
+        margin: 0 10px;
+        transition: var(--transition);
+      }
+
+      .nav-link:hover {
+        color: var(--primary-dark) !important;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-dark);
+        border-color: var(--primary-dark);
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-medium);
+        border-color: var(--primary-medium);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(168, 107, 163, 0.3);
+      }
+
+      /* Page Header */
+      .page-header {
+        background: linear-gradient(
+            rgba(168, 107, 163, 0.8),
+            rgba(168, 107, 163, 0.8)
+          ),
+          url("https://res.cloudinary.com/demo/image/upload/v1681234567/gallery-header.jpg")
+            center/cover no-repeat;
+        padding: 120px 0 80px;
+        color: var(--white);
+        text-align: center;
+      }
+
+      .page-header h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+      }
+
+      .breadcrumb {
+        background: transparent;
+        justify-content: center;
+      }
+
+      .breadcrumb-item a {
+        color: var(--white);
+        text-decoration: none;
+      }
+
+      .breadcrumb-item.active {
+        color: var(--primary-light);
+      }
+
+      /* Gallery Section */
+      .gallery-section {
+        padding: 80px 0;
+      }
+
+      /* Gallery Filters */
+      .gallery-filters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 50px;
+      }
+
+      .filter-btn {
+        background-color: var(--white);
+        border: 1px solid #e0e0e0;
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-weight: 500;
+        color: var(--dark);
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background-color: var(--primary-dark);
+        border-color: var(--primary-dark);
+        color: var(--white);
+      }
+
+      /* Masonry Grid */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: var(--transition);
+        cursor: pointer;
+        aspect-ratio: 1/1;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .gallery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover .gallery-img {
+        transform: scale(1.1);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 25px;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .gallery-category {
+        color: var(--primary-medium);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .gallery-title {
+        color: var(--white);
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+
+      .gallery-description {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+
+      .gallery-zoom {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-dark);
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover .gallery-zoom {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Special Layout Items */
+      .gallery-item.featured {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .gallery-item.horizontal {
+        grid-column: span 2;
+      }
+
+      .gallery-item.vertical {
+        grid-row: span 2;
+      }
+
+      /* Before & After Section */
+      .before-after-section {
+        background-color: var(--primary-light);
+        padding: 80px 0;
+        margin-top: 60px;
+      }
+
+      .comparison-slider {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .comparison-image {
+        width: 100%;
+        display: block;
+      }
+
+      .comparison-before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 50%;
+        overflow: hidden;
+      }
+
+      .comparison-slider-handle {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background-color: var(--white);
+        transform: translateX(-50%);
+        cursor: ew-resize;
+      }
+
+      .comparison-slider-handle:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        background-color: var(--white);
+        border: 4px solid var(--primary-dark);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .comparison-label {
+        position: absolute;
+        top: 20px;
+        padding: 8px 15px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: var(--white);
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      .before-label {
+        left: 20px;
+      }
+
+      .after-label {
+        right: 20px;
+      }
+
+      /* Testimonial Gallery */
+      .testimonial-gallery {
+        padding: 80px 0;
+      }
+
+      .testimonial-card {
+        background-color: var(--white);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        transition: var(--transition);
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .testimonial-content {
+        font-style: italic;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .testimonial-content:before {
+        content: "\201C";
+        font-size: 4rem;
+        color: var(--primary-light);
+        position: absolute;
+        top: -20px;
+        left: -10px;
+        font-family: Georgia, serif;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .testimonial-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+      }
+
+      .testimonial-rating {
+        color: #ffc107;
+        margin-bottom: 5px;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary-medium)
+        );
+        color: var(--white);
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      /* Lightbox Modal */
+      .lightbox-modal .modal-content {
+        background-color: transparent;
+        border: none;
+      }
+
+      .lightbox-modal .modal-header {
+        border: none;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+      }
+
+      .lightbox-modal .btn-close {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox-img {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .lightbox-caption {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: var(--white);
+        padding: 20px;
+        border-radius: 0 0 10px 10px;
+        margin-top: -5px;
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-dark);
+        font-size: 1.5rem;
+        transition: var(--transition);
+      }
+
+      .lightbox-nav:hover {
+        background-color: var(--white);
+      }
+
+      .lightbox-prev {
+        left: 20px;
+      }
+
+      .lightbox-next {
+        right: 20px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: var(--white);
+        padding: 60px 0 20px;
+      }
+
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: var(--white);
+        margin-bottom: 20px;
+      }
+
+      .footer-links h5 {
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-links h5:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary-medium);
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links ul li a {
+        color: #cccccc;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links ul li a:hover {
+        color: var(--primary-medium);
+        padding-left: 5px;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 10px;
+        color: var(--white);
+        transition: var(--transition);
+      }
+
+      .social-icons a:hover {
+        background-color: var(--primary-medium);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        margin-top: 40px;
+        text-align: center;
+        color: #cccccc;
+        font-size: 0.9rem;
+      }
+
+      /* Cart */
+      .cart-sidebar {
+        position: fixed;
+        top: 0;
+        right: -400px;
+        width: 100%;
+        max-width: 400px;
+        height: 100vh;
+        background-color: var(--white);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1050;
+        transition: var(--transition);
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      .cart-sidebar.open {
+        right: 0;
+      }
+
+      .cart-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+        display: none;
+      }
+
+      .cart-overlay.show {
+        display: block;
+      }
+
+      .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .cart-item-img {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 15px;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .gallery-item.featured,
+        .gallery-item.horizontal,
+        .gallery-item.vertical {
+          grid-column: span 1;
+          grid-row: span 1;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .page-header h1 {
+          font-size: 2.5rem;
+        }
+
+        .gallery-filters {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .filter-btn {
+          width: 100%;
+          max-width: 250px;
+          text-align: center;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .lightbox-nav {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
+
+        .lightbox-prev {
+          left: 10px;
+        }
+
+        .lightbox-next {
+          right: 10px;
+        }
+      }
+
+      /* Loading Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .gallery-item {
+        animation: fadeIn 0.6s ease forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Joy World</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="booking.html">Book Now</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="shop.html">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="auth.html">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Our Beauty Gallery</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Gallery</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+      <div class="container">
+        <!-- Gallery Filters -->
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">All Work</button>
+          <button class="filter-btn" data-filter="makeup">Makeup</button>
+          <button class="filter-btn" data-filter="facials">Facials</button>
+          <button class="filter-btn" data-filter="nails">Nails</button>
+          <button class="filter-btn" data-filter="hair">Hair</button>
+          <button class="filter-btn" data-filter="bridal">Bridal</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery items will be dynamically loaded here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Before & After Section -->
+    <section class="before-after-section">
+      <div class="container">
+        <div class="section-title text-center mb-5">
+          <h2>Transformations</h2>
+          <p>See the amazing results our clients have achieved</p>
+        </div>
+
+        <div class="comparison-slider" id="comparisonSlider">
+          <img
+            src="https://res.cloudinary.com/demo/image/upload/v1681234567/before-skin.jpg"
+            alt="Before"
+            class="comparison-image"
+          />
+          <div class="comparison-before">
+            <img
+              src="https://res.cloudinary.com/demo/image/upload/v1681234567/after-skin.jpg"
+              alt="After"
+              class="comparison-image"
+            />
+          </div>
+          <div class="comparison-slider-handle"></div>
+          <div class="comparison-label before-label">Before</div>
+          <div class="comparison-label after-label">After</div>
+        </div>
+
+        <div class="text-center mt-5">
+          <p class="mb-4">
+            Our skincare treatments deliver visible results. Drag the slider to
+            see the transformation.
+          </p>
+          <a href="services.html" class="btn btn-primary">View Our Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Gallery -->
+    <section class="testimonial-gallery">
+      <div class="container">
+        <div class="section-title text-center mb-5">
+          <h2>Client Love</h2>
+          <p>See what our clients are saying about their experience</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>
+                  I've been coming to Joy World for over a year now, and I'm
+                  always impressed with their attention to detail. My skin has
+                  never looked better!
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="https://res.cloudinary.com/demo/image/upload/v1681234567/client1.jpg"
+                  alt="Sarah"
+                  class="testimonial-avatar"
+                />
+                <div>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h5>Sarah Johnson</h5>
+                  <p class="text-muted">Skincare Client</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>
+                  The bridal makeup team at Joy World made me feel like a
+                  princess on my wedding day. The makeup lasted all day and
+                  looked incredible in photos.
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="https://res.cloudinary.com/demo/image/upload/v1681234567/client2.jpg"
+                  alt="Emma"
+                  class="testimonial-avatar"
+                />
+                <div>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h5>Emma Wilson</h5>
+                  <p class="text-muted">Bridal Client</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>
+                  I'm so impressed with the nail art at Joy World. Every design
+                  is unique and executed perfectly. My nails always get so many
+                  compliments!
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="https://res.cloudinary.com/demo/image/upload/v1681234567/client3.jpg"
+                  alt="Olivia"
+                  class="testimonial-avatar"
+                />
+                <div>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h5>Olivia Martinez</h5>
+                  <p class="text-muted">Nail Art Client</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready for Your Transformation?</h2>
+        <p>
+          Book your appointment today and experience the Joy World difference.
+          Let us bring out your natural beauty.
+        </p>
+        <a href="booking.html" class="btn btn-light btn-lg me-3"
+          >Book Appointment</a
+        >
+        <a href="contact.html" class="btn btn-outline-light btn-lg"
+          >Contact Us</a
+        >
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="modal fade lightbox-modal" id="lightboxModal" tabindex="-1">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body p-0">
+            <button class="lightbox-nav lightbox-prev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-nav lightbox-next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <img id="lightboxImage" src="" alt="" class="lightbox-img" />
+            <div class="lightbox-caption">
+              <h4 id="lightboxTitle"></h4>
+              <p id="lightboxDescription"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>Your Cart</h4>
+        <button class="btn-close" id="close-cart"></button>
+      </div>
+      <div id="cart-items">
+        <!-- Cart items will be dynamically added here -->
+      </div>
+      <div class="cart-total mt-4 pt-4 border-top">
+        <div class="d-flex justify-content-between mb-3">
+          <strong>Total:</strong>
+          <strong id="cart-total-price">£0.00</strong>
+        </div>
+        <button class="btn btn-primary w-100" id="checkout-btn">
+          Checkout
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <div class="footer-logo">Joy World</div>
+            <p>
+              Luxury beauty salon offering premium services in Manchester.
+              Experience the perfect blend of expertise and elegance.
+            </p>
+            <div class="social-icons mt-4">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Quick Links</h5>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="booking.html">Book Now</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Services</h5>
+              <ul>
+                <li><a href="services.html">Facials & Skincare</a></li>
+                <li><a href="services.html">Makeup Artistry</a></li>
+                <li><a href="services.html">Manicure & Pedicure</a></li>
+                <li><a href="services.html">Hair Styling</a></li>
+                <li><a href="services.html">Waxing</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-links">
+              <h5>Contact Info</h5>
+              <ul>
+                <li>
+                  <i class="fas fa-map-marker-alt me-2"></i> 123 Beauty Street,
+                  Manchester
+                </li>
+                <li><i class="fas fa-phone me-2"></i> +44 161 123 4567</li>
+                <li>
+                  <i class="fas fa-envelope me-2"></i> info@joyworldbeauty.com
+                </li>
+                <li>
+                  <i class="fas fa-clock me-2"></i> Mon-Sat: 9am-7pm, Sun:
+                  10am-5pm
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2023 Joy World Home of Beauty. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+      // Gallery Data
+      const galleryItems = [
+        {
+          id: 1,
+          category: "makeup",
+          title: "Evening Glam Makeup",
+          description:
+            "Sophisticated evening look with smokey eyes and bold lips",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/makeup1.jpg",
+          featured: false,
+        },
+        {
+          id: 2,
+          category: "bridal",
+          title: "Classic Bridal Look",
+          description: "Timeless bridal makeup for the perfect wedding day",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/bridal1.jpg",
+          featured: true,
+        },
+        {
+          id: 3,
+          category: "nails",
+          title: "French Manicure with Gold Accents",
+          description:
+            "Elegant French manicure with delicate gold foil details",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/nails1.jpg",
+          featured: false,
+        },
+        {
+          id: 4,
+          category: "facials",
+          title: "Hydrating Facial Results",
+          description:
+            "Immediate results after our signature hydrating facial treatment",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/facial1.jpg",
+          featured: false,
+        },
+        {
+          id: 5,
+          category: "hair",
+          title: "Balayage Hair Coloring",
+          description:
+            "Beautiful sun-kissed balayage with face-framing highlights",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/hair1.jpg",
+          featured: false,
+          horizontal: true,
+        },
+        {
+          id: 6,
+          category: "makeup",
+          title: "Natural Day Makeup",
+          description: "Fresh, natural makeup for everyday wear",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/makeup2.jpg",
+          featured: false,
+        },
+        {
+          id: 7,
+          category: "nails",
+          title: "Abstract Nail Art",
+          description: "Creative abstract design with metallic accents",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/nails2.jpg",
+          featured: false,
+          vertical: true,
+        },
+        {
+          id: 8,
+          category: "bridal",
+          title: "Bridal Party Makeup",
+          description: "Coordinated makeup looks for the entire bridal party",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/bridal2.jpg",
+          featured: false,
+        },
+        {
+          id: 9,
+          category: "facials",
+          title: "Anti-Aging Treatment",
+          description:
+            "Visible reduction in fine lines after our anti-aging facial",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/facial2.jpg",
+          featured: false,
+        },
+        {
+          id: 10,
+          category: "hair",
+          title: "Elegant Updo",
+          description: "Sophisticated updo for special occasions",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/hair2.jpg",
+          featured: false,
+        },
+        {
+          id: 11,
+          category: "makeup",
+          title: "Bold Color Makeup",
+          description: "Creative use of color for a dramatic evening look",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/makeup3.jpg",
+          featured: false,
+        },
+        {
+          id: 12,
+          category: "nails",
+          title: "Marble Nail Design",
+          description: "Elegant marble effect with gold veining",
+          image:
+            "https://res.cloudinary.com/demo/image/upload/v1681234567/nails3.jpg",
+          featured: false,
+        },
+      ];
+
+      // Cart functionality
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let currentLightboxIndex = 0;
+      let filteredGalleryItems = [...galleryItems];
+
+      function updateCartCount() {
+        const cartCount = document.querySelector(".cart-count");
+        if (cartCount) {
+          cartCount.textContent = cart.reduce(
+            (total, item) => total + item.quantity,
+            0
+          );
+        }
+      }
+
+      function openCart() {
+        document.getElementById("cart-sidebar").classList.add("open");
+        document.getElementById("cart-overlay").classList.add("show");
+        renderCartItems();
+      }
+
+      function closeCart() {
+        document.getElementById("cart-sidebar").classList.remove("open");
+        document.getElementById("cart-overlay").classList.remove("show");
+      }
+
+      function renderCartItems() {
+        const cartItemsContainer = document.getElementById("cart-items");
+        const cartTotalPrice = document.getElementById("cart-total-price");
+
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML =
+            '<p class="text-center">Your cart is empty</p>';
+          cartTotalPrice.textContent = "£0.00";
+          return;
+        }
+
+        let total = 0;
+        cartItemsContainer.innerHTML = "";
+
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+
+          const cartItem = document.createElement("div");
+          cartItem.className = "cart-item";
+          cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${
+            item.name
+          }" class="cart-item-img">
+                    <div class="flex-grow-1">
+                        <h6>${item.name}</h6>
+                        <p class="mb-1">£${item.price.toFixed(2)}</p>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-secondary decrease-quantity" data-index="${index}">-</button>
+                            <span class="mx-2">${item.quantity}</span>
+                            <button class="btn btn-sm btn-outline-secondary increase-quantity" data-index="${index}">+</button>
+                            <button class="btn btn-sm btn-outline-danger ms-2 remove-item" data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+          cartItemsContainer.appendChild(cartItem);
+        });
+
+        cartTotalPrice.textContent = `£${total.toFixed(2)}`;
+
+        // Add event listeners to cart buttons
+        document.querySelectorAll(".increase-quantity").forEach((button) => {
+          button.addEventListener("click", function () {
+            const index = parseInt(this.getAttribute("data-index"));
+            cart[index].quantity++;
+            saveCart();
+            renderCartItems();
+            updateCartCount();
+          });
+        });
+
+        document.querySelectorAll(".decrease-quantity").forEach((button) => {
+          button.addEventListener("click", function () {
+            const index = parseInt(this.getAttribute("data-index"));
+            if (cart[index].quantity > 1) {
+              cart[index].quantity--;
+            } else {
+              cart.splice(index, 1);
+            }
+            saveCart();
+            renderCartItems();
+            updateCartCount();
+          });
+        });
+
+        document.querySelectorAll(".remove-item").forEach((button) => {
+          button.addEventListener("click", function () {
+            const index = parseInt(this.getAttribute("data-index"));
+            cart.splice(index, 1);
+            saveCart();
+            renderCartItems();
+            updateCartCount();
+          });
+        });
+      }
+
+      function saveCart() {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+
+      // Gallery functionality
+      function displayGallery(items = filteredGalleryItems) {
+        const galleryGrid = document.getElementById("galleryGrid");
+        galleryGrid.innerHTML = "";
+
+        if (items.length === 0) {
+          galleryGrid.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <i class="fas fa-images fa-3x mb-3 text-muted"></i>
+                        <h3 class="text-muted">No images found</h3>
+                        <p class="text-muted">Try selecting a different category</p>
+                    </div>
+                `;
+          return;
+        }
+
+        items.forEach((item, index) => {
+          const galleryItem = document.createElement("div");
+          let itemClass = "gallery-item";
+
+          if (item.featured) itemClass += " featured";
+          if (item.horizontal) itemClass += " horizontal";
+          if (item.vertical) itemClass += " vertical";
+
+          galleryItem.className = itemClass;
+          galleryItem.setAttribute("data-category", item.category);
+          galleryItem.setAttribute("data-index", index);
+
+          galleryItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">${item.category}</span>
+                        <h3 class="gallery-title">${item.title}</h3>
+                        <p class="gallery-description">${item.description}</p>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                `;
+
+          galleryGrid.appendChild(galleryItem);
+        });
+
+        // Add click event to gallery items
+        document.querySelectorAll(".gallery-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            const index = parseInt(this.getAttribute("data-index"));
+            openLightbox(index);
+          });
+        });
+      }
+
+      function filterGallery(category) {
+        if (category === "all") {
+          filteredGalleryItems = [...galleryItems];
+        } else {
+          filteredGalleryItems = galleryItems.filter(
+            (item) => item.category === category
+          );
+        }
+        displayGallery(filteredGalleryItems);
+      }
+
+      function openLightbox(index) {
+        currentLightboxIndex = index;
+        const item = filteredGalleryItems[index];
+
+        document.getElementById("lightboxImage").src = item.image;
+        document.getElementById("lightboxTitle").textContent = item.title;
+        document.getElementById("lightboxDescription").textContent =
+          item.description;
+
+        const lightboxModal = new bootstrap.Modal(
+          document.getElementById("lightboxModal")
+        );
+        lightboxModal.show();
+      }
+
+      function navigateLightbox(direction) {
+        if (direction === "next") {
+          currentLightboxIndex =
+            (currentLightboxIndex + 1) % filteredGalleryItems.length;
+        } else {
+          currentLightboxIndex =
+            (currentLightboxIndex - 1 + filteredGalleryItems.length) %
+            filteredGalleryItems.length;
+        }
+
+        const item = filteredGalleryItems[currentLightboxIndex];
+        document.getElementById("lightboxImage").src = item.image;
+        document.getElementById("lightboxTitle").textContent = item.title;
+        document.getElementById("lightboxDescription").textContent =
+          item.description;
+      }
+
+      // Before/After Slider
+      function initComparisonSlider() {
+        const slider = document.getElementById("comparisonSlider");
+        const before = slider.querySelector(".comparison-before");
+        const handle = slider.querySelector(".comparison-slider-handle");
+        let isResizing = false;
+
+        function updateSliderPosition(clientX) {
+          const sliderRect = slider.getBoundingClientRect();
+          const position =
+            ((clientX - sliderRect.left) / sliderRect.width) * 100;
+          const boundedPosition = Math.max(0, Math.min(100, position));
+
+          before.style.width = `${boundedPosition}%`;
+          handle.style.left = `${boundedPosition}%`;
+        }
+
+        handle.addEventListener("mousedown", function (e) {
+          isResizing = true;
+          e.preventDefault();
+        });
+
+        slider.addEventListener("mousedown", function (e) {
+          isResizing = true;
+          updateSliderPosition(e.clientX);
+        });
+
+        document.addEventListener("mousemove", function (e) {
+          if (!isResizing) return;
+          updateSliderPosition(e.clientX);
+        });
+
+        document.addEventListener("mouseup", function () {
+          isResizing = false;
+        });
+
+        // Touch events for mobile
+        handle.addEventListener("touchstart", function (e) {
+          isResizing = true;
+          e.preventDefault();
+        });
+
+        slider.addEventListener("touchstart", function (e) {
+          isResizing = true;
+          updateSliderPosition(e.touches[0].clientX);
+        });
+
+        document.addEventListener("touchmove", function (e) {
+          if (!isResizing) return;
+          updateSliderPosition(e.touches[0].clientX);
+        });
+
+        document.addEventListener("touchend", function () {
+          isResizing = false;
+        });
+      }
+
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        updateCartCount();
+        displayGallery();
+        initComparisonSlider();
+
+        // Filter buttons
+        document.querySelectorAll(".filter-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            document.querySelectorAll(".filter-btn").forEach((btn) => {
+              btn.classList.remove("active");
+            });
+            this.classList.add("active");
+            const category = this.getAttribute("data-filter");
+            filterGallery(category);
+          });
+        });
+
+        // Lightbox navigation
+        document
+          .querySelector(".lightbox-prev")
+          .addEventListener("click", function () {
+            navigateLightbox("prev");
+          });
+
+        document
+          .querySelector(".lightbox-next")
+          .addEventListener("click", function () {
+            navigateLightbox("next");
+          });
+
+        // Keyboard navigation for lightbox
+        document.addEventListener("keydown", function (e) {
+          const lightboxModal = document.getElementById("lightboxModal");
+          if (lightboxModal.classList.contains("show")) {
+            if (e.key === "ArrowLeft") {
+              navigateLightbox("prev");
+            } else if (e.key === "ArrowRight") {
+              navigateLightbox("next");
+            } else if (e.key === "Escape") {
+              const modal = bootstrap.Modal.getInstance(lightboxModal);
+              modal.hide();
+            }
+          }
+        });
+
+        // Cart event listeners
+        document
+          .getElementById("cart-icon")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            openCart();
+          });
+
+        document
+          .getElementById("close-cart")
+          .addEventListener("click", closeCart);
+        document
+          .getElementById("cart-overlay")
+          .addEventListener("click", closeCart);
+
+        // Checkout button
+        document
+          .getElementById("checkout-btn")
+          .addEventListener("click", function () {
+            if (cart.length === 0) {
+              alert("Your cart is empty!");
+              return;
+            }
+
+            // In a real implementation, this would redirect to a checkout page
+            alert("Checkout functionality would be implemented here!");
+          });
+      });
+    </script>
+  </body>
+</html>

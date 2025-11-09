@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Joy World Home of Beauty</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --primary-light: #f6e9f0;
+        --white: #ffffff;
+        --primary-medium: #d6a7c0;
+        --primary-dark: #a86ba3;
+        --dark: #333333;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: var(--dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+        background-color: #f9f9f9;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+      }
+
+      /* Header & Navigation */
+      .navbar {
+        background-color: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 15px 0;
+        transition: var(--transition);
+      }
+
+      .navbar-brand {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: var(--primary-dark) !important;
+      }
+
+      .nav-link {
+        font-weight: 500;
+        color: var(--dark) !important;
+        margin: 0 10px;
+        transition: var(--transition);
+      }
+
+      .nav-link:hover {
+        color: var(--primary-dark) !important;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-dark);
+        border-color: var(--primary-dark);
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-medium);
+        border-color: var(--primary-medium);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(168, 107, 163, 0.3);
+      }
+
+      /* Page Header */
+      .page-header {
+        background: linear-gradient(
+            rgba(168, 107, 163, 0.8),
+            rgba(168, 107, 163, 0.8)
+          ),
+          url("https://res.cloudinary.com/demo/image/upload/v1681234567/contact-header.jpg")
+            center/cover no-repeat;
+        padding: 120px 0 80px;
+        color: var(--white);
+        text-align: center;
+      }
+
+      .page-header h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+      }
+
+      .breadcrumb {
+        background: transparent;
+        justify-content: center;
+      }
+
+      .breadcrumb-item a {
+        color: var(--white);
+        text-decoration: none;
+      }
+
+      .breadcrumb-item.active {
+        color: var(--primary-light);
+      }
+
+      /* Contact Section */
+      .contact-section {
+        padding: 80px 0;
+      }
+
+      .contact-container {
+        background-color: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+
+      .contact-info {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary-medium)
+        );
+        color: var(--white);
+        padding: 50px 40px;
+        height: 100%;
+      }
+
+      .contact-info h3 {
+        margin-bottom: 30px;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .contact-info h3:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--white);
+      }
+
+      .contact-details {
+        margin-bottom: 40px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+
+      .contact-text h5 {
+        margin-bottom: 5px;
+      }
+
+      .contact-text p {
+        margin-bottom: 0;
+        opacity: 0.9;
+      }
+
+      .social-contact {
+        margin-top: 30px;
+      }
+
+      .social-contact h5 {
+        margin-bottom: 15px;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .social-icon {
+        width: 45px;
+        height: 45px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .social-icon:hover {
+        background-color: var(--white);
+        color: var(--primary-dark);
+        transform: translateY(-3px);
+      }
+
+      /* Contact Form */
+      .contact-form {
+        padding: 50px 40px;
+      }
+
+      .form-section-title {
+        font-size: 1.5rem;
+        color: var(--primary-dark);
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-label {
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: var(--dark);
+      }
+
+      .form-control,
+      .form-select,
+      .form-textarea {
+        padding: 12px 15px;
+        border-radius: 10px;
+        border: 1px solid #e0e0e0;
+        transition: var(--transition);
+        width: 100%;
+      }
+
+      .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .form-control:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        border-color: var(--primary-medium);
+        box-shadow: 0 0 0 0.2rem rgba(214, 167, 192, 0.25);
+      }
+
+      /* Quick Contact Options */
+      .quick-contact {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .quick-contact-btn {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 15px;
+        background-color: var(--primary-light);
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--dark);
+        transition: var(--transition);
+        text-align: center;
+      }
+
+      .quick-contact-btn:hover {
+        background-color: var(--primary-medium);
+        color: var(--white);
+        transform: translateY(-5px);
+      }
+
+      .quick-contact-icon {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+
+      /* Map Section */
+      .map-section {
+        padding: 0 0 80px;
+      }
+
+      .map-container {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        height: 450px;
+      }
+
+      #map {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        background-color: var(--primary-light);
+        padding: 80px 0;
+      }
+
+      .faq-item {
+        margin-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .faq-question {
+        background-color: var(--white);
+        padding: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: var(--transition);
+      }
+
+      .faq-question:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+
+      .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: var(--transition);
+        background-color: var(--white);
+      }
+
+      .faq-item.active .faq-answer {
+        padding: 20px;
+        max-height: 500px;
+      }
+
+      .faq-item.active .faq-toggle i {
+        transform: rotate(180deg);
+      }
+
+      .faq-toggle {
+        transition: var(--transition);
+      }
+
+      /* Business Hours */
+      .hours-section {
+        padding: 80px 0;
+      }
+
+      .hours-card {
+        background-color: var(--white);
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        text-align: center;
+      }
+
+      .hours-list {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0;
+      }
+
+      .hours-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .hours-item:last-child {
+        border-bottom: none;
+      }
+
+      .hours-day {
+        font-weight: 500;
+      }
+
+      .hours-time {
+        color: var(--primary-dark);
+        font-weight: 500;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: var(--white);
+        padding: 60px 0 20px;
+      }
+
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: var(--white);
+        margin-bottom: 20px;
+      }
+
+      .footer-links h5 {
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-links h5:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary-medium);
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links ul li a {
+        color: #cccccc;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links ul li a:hover {
+        color: var(--primary-medium);
+        padding-left: 5px;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 10px;
+        color: var(--white);
+        transition: var(--transition);
+      }
+
+      .social-icons a:hover {
+        background-color: var(--primary-medium);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        margin-top: 40px;
+        text-align: center;
+        color: #cccccc;
+        font-size: 0.9rem;
+      }
+
+      /* Cart */
+      .cart-sidebar {
+        position: fixed;
+        top: 0;
+        right: -400px;
+        width: 100%;
+        max-width: 400px;
+        height: 100vh;
+        background-color: var(--white);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1050;
+        transition: var(--transition);
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      .cart-sidebar.open {
+        right: 0;
+      }
+
+      .cart-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+        display: none;
+      }
+
+      .cart-overlay.show {
+        display: block;
+      }
+
+      .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .cart-item-img {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 15px;
+      }
+
+      /* Success Message */
+      .alert-success {
+        border-radius: 10px;
+        border: none;
+        padding: 15px 20px;
+        background-color: #d4edda;
+        color: #155724;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .page-header h1 {
+          font-size: 2.5rem;
+        }
+
+        .contact-info,
+        .contact-form {
+          padding: 30px 20px;
+        }
+
+        .quick-contact {
+          flex-direction: column;
+        }
+
+        .map-container {
+          height: 350px;
+        }
+
+        .hours-card {
+          padding: 30px 20px;
+        }
+      }
+
+      /* Loading Spinner */
+      .spinner-border {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-width: 0.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Joy World</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="booking.html">Book Now</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="shop.html">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="auth.html">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Get In Touch</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Contact</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-container">
+          <div class="row g-0">
+            <!-- Contact Information -->
+            <div class="col-lg-5">
+              <div class="contact-info">
+                <h3>Contact Information</h3>
+
+                <div class="contact-details">
+                  <div class="contact-item">
+                    <div class="contact-icon">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                      <h5>Our Location</h5>
+                      <p>
+                        123 Beauty Street<br />Manchester M1 1AB<br />United
+                        Kingdom
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="contact-item">
+                    <div class="contact-icon">
+                      <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                      <h5>Phone Number</h5>
+                      <p>+44 161 123 4567</p>
+                    </div>
+                  </div>
+
+                  <div class="contact-item">
+                    <div class="contact-icon">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                      <h5>Email Address</h5>
+                      <p>info@joyworldbeauty.com</p>
+                    </div>
+                  </div>
+
+                  <div class="contact-item">
+                    <div class="contact-icon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                      <h5>Working Hours</h5>
+                      <p>
+                        Monday - Saturday: 9:00 AM - 7:00 PM<br />Sunday: 10:00
+                        AM - 5:00 PM
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="social-contact">
+                  <h5>Follow Us</h5>
+                  <div class="social-icons">
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-pinterest"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+              <div class="contact-form">
+                <h3 class="form-section-title">Send Us a Message</h3>
+
+                <form id="contactForm">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="name" class="form-label">Full Name *</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="email" class="form-label"
+                          >Email Address *</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="phone" class="form-label"
+                          >Phone Number</label
+                        >
+                        <input type="tel" class="form-control" id="phone" />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="subject" class="form-label"
+                          >Subject *</label
+                        >
+                        <select class="form-select" id="subject" required>
+                          <option value="" disabled selected>
+                            Select a subject
+                          </option>
+                          <option value="general">General Inquiry</option>
+                          <option value="booking">Booking Question</option>
+                          <option value="service">Service Information</option>
+                          <option value="product">Product Question</option>
+                          <option value="complaint">Complaint</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message" class="form-label">Message *</label>
+                    <textarea
+                      class="form-control form-textarea"
+                      id="message"
+                      required
+                      placeholder="Tell us how we can help you..."
+                    ></textarea>
+                  </div>
+
+                  <div class="form-group form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="newsletter"
+                    />
+                    <label class="form-check-label" for="newsletter"
+                      >Subscribe to our newsletter for beauty tips and special
+                      offers</label
+                    >
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-lg w-100"
+                    id="submitContact"
+                  >
+                    <span
+                      class="spinner-border spinner-border-sm d-none"
+                      role="status"
+                    ></span>
+                    Send Message
+                  </button>
+                </form>
+
+                <!-- Quick Contact Options -->
+                <div class="quick-contact mt-5">
+                  <a href="tel:+441611234567" class="quick-contact-btn">
+                    <div class="quick-contact-icon">
+                      <i class="fas fa-phone"></i>
+                    </div>
+                    <span>Call Us</span>
+                  </a>
+
+                  <a
+                    href="https://wa.me/441611234567"
+                    class="quick-contact-btn"
+                    target="_blank"
+                  >
+                    <div class="quick-contact-icon">
+                      <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <span>WhatsApp</span>
+                  </a>
+
+                  <a
+                    href="https://www.google.com/maps/dir//123+Beauty+Street+Manchester+M1+1AB"
+                    class="quick-contact-btn"
+                    target="_blank"
+                  >
+                    <div class="quick-contact-icon">
+                      <i class="fas fa-directions"></i>
+                    </div>
+                    <span>Get Directions</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="container">
+        <div class="map-container">
+          <!-- Google Maps Embed -->
+          <iframe
+            id="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.437839120938!2d-2.242722123025946!3d53.48037207232278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb1c16ecb7dd7%3A0x3f10e98ed6358d2e!2sManchester%2C%20UK!5e0!3m2!1sen!2sus!4v1681234567890!5m2!1sen!2sus"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Hours -->
+    <section class="hours-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <div class="hours-card">
+              <h3>Salon Hours</h3>
+              <p class="text-muted">Visit us during our opening hours</p>
+
+              <ul class="hours-list">
+                <li class="hours-item">
+                  <span class="hours-day">Monday</span>
+                  <span class="hours-time">9:00 AM - 7:00 PM</span>
+                </li>
+                <li class="hours-item">
+                  <span class="hours-day">Tuesday</span>
+                  <span class="hours-time">9:00 AM - 7:00 PM</span>
+                </li>
+                <li class="hours-item">
+                  <span class="hours-day">Wednesday</span>
+                  <span class="hours-time">9:00 AM - 7:00 PM</span>
+                </li>
+                <li class="hours-item">
+                  <span class="hours-day">Thursday</span>
+                  <span class="hours-time">9:00 AM - 7:00 PM</span>
+                </li>
+                <li class="hours-item">
+                  <span class="hours-day">Friday</span>
+                  <span class="hours-time">9:00 AM - 7:00 PM</span>
+                </li>
+                <li class="hours-item">
+                  <span class="hours-day">Saturday</span>
+                  <span class="hours-time">9:00 AM - 7:00 PM</span>
+                </li>
+                <li class="hours-item">
+                  <span class="hours-day">Sunday</span>
+                  <span class="hours-time">10:00 AM - 5:00 PM</span>
+                </li>
+              </ul>
+
+              <p class="text-muted mb-4">
+                We recommend booking appointments in advance to secure your
+                preferred time slot.
+              </p>
+              <a href="booking.html" class="btn btn-primary"
+                >Book an Appointment</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-title text-center mb-5">
+          <h2>Frequently Asked Questions</h2>
+          <p>Quick answers to common questions</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="faq-item">
+              <div class="faq-question">
+                How do I book an appointment?
+                <span class="faq-toggle"
+                  ><i class="fas fa-chevron-down"></i
+                ></span>
+              </div>
+              <div class="faq-answer">
+                You can book an appointment through our online booking system,
+                by calling us at +44 161 123 4567, or by visiting our salon in
+                person. We recommend booking at least 1-2 weeks in advance for
+                weekend appointments.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                What is your cancellation policy?
+                <span class="faq-toggle"
+                  ><i class="fas fa-chevron-down"></i
+                ></span>
+              </div>
+              <div class="faq-answer">
+                We require 24 hours notice for cancellations or rescheduling.
+                Appointments cancelled with less than 24 hours notice may be
+                subject to a 50% cancellation fee. No-shows will be charged the
+                full service amount.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                Do you offer gift cards?
+                <span class="faq-toggle"
+                  ><i class="fas fa-chevron-down"></i
+                ></span>
+              </div>
+              <div class="faq-answer">
+                Yes! We offer physical and digital gift cards that can be used
+                for any of our services or products. Gift cards can be purchased
+                in-store or over the phone.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                Is there parking available?
+                <span class="faq-toggle"
+                  ><i class="fas fa-chevron-down"></i
+                ></span>
+              </div>
+              <div class="faq-answer">
+                We have limited parking available behind the salon. There is
+                also street parking and several public parking lots within a
+                5-minute walk from our location.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                Do you accommodate group bookings?
+                <span class="faq-toggle"
+                  ><i class="fas fa-chevron-down"></i
+                ></span>
+              </div>
+              <div class="faq-answer">
+                Absolutely! We love hosting groups for special occasions like
+                bridal parties, birthdays, and corporate events. Please contact
+                us in advance to discuss your needs and we'll create a
+                customized experience for your group.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body text-center py-4">
+            <div class="mb-4">
+              <i class="fas fa-check-circle fa-4x text-success"></i>
+            </div>
+            <h3 class="mb-3">Message Sent!</h3>
+            <p class="mb-4">
+              Thank you for contacting Joy World. We'll get back to you within
+              24 hours.
+            </p>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>Your Cart</h4>
+        <button class="btn-close" id="close-cart"></button>
+      </div>
+      <div id="cart-items">
+        <!-- Cart items will be dynamically added here -->
+      </div>
+      <div class="cart-total mt-4 pt-4 border-top">
+        <div class="d-flex justify-content-between mb-3">
+          <strong>Total:</strong>
+          <strong id="cart-total-price">£0.00</strong>
+        </div>
+        <button class="btn btn-primary w-100" id="checkout-btn">
+          Checkout
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <div class="footer-logo">Joy World</div>
+            <p>
+              Luxury beauty salon offering premium services in Manchester.
+              Experience the perfect blend of expertise and elegance.
+            </p>
+            <div class="social-icons mt-4">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Quick Links</h5>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="booking.html">Book Now</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Services</h5>
+              <ul>
+                <li><a href="services.html">Facials & Skincare</a></li>
+                <li><a href="services.html">Makeup Artistry</a></li>
+                <li><a href="services.html">Manicure & Pedicure</a></li>
+                <li><a href="services.html">Hair Styling</a></li>
+                <li><a href="services.html">Waxing</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-links">
+              <h5>Contact Info</h5>
+              <ul>
+                <li>
+                  <i class="fas fa-map-marker-alt me-2"></i> 123 Beauty Street,
+                  Manchester
+                </li>
+                <li><i class="fas fa-phone me-2"></i> +44 161 123 4567</li>
+                <li>
+                  <i class="fas fa-envelope me-2"></i> info@joyworldbeauty.com
+                </li>
+                <li>
+                  <i class="fas fa-clock me-2"></i> Mon-Sat: 9am-7pm, Sun:
+                  10am-5pm
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2023 Joy World Home of Beauty. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- EmailJS (for form submission) -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+      // Initialize EmailJS
+      (function () {
+        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+      })();
+
+      // Cart functionality
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      function updateCartCount() {
+        const cartCount = document.querySelector(".cart-count");
+        if (cartCount) {
+          cartCount.textContent = cart.reduce(
+            (total, item) => total + item.quantity,
+            0
+          );
+        }
+      }
+
+      function openCart() {
+        document.getElementById("cart-sidebar").classList.add("open");
+        document.getElementById("cart-overlay").classList.add("show");
+        renderCartItems();
+      }
+
+      function closeCart() {
+        document.getElementById("cart-sidebar").classList.remove("open");
+        document.getElementById("cart-overlay").classList.remove("show");
+      }
+
+      function renderCartItems() {
+        const cartItemsContainer = document.getElementById("cart-items");
+        const cartTotalPrice = document.getElementById("cart-total-price");
+
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML =
+            '<p class="text-center">Your cart is empty</p>';
+          cartTotalPrice.textContent = "£0.00";
+          return;
+        }
+
+        let total = 0;
+        cartItemsContainer.innerHTML = "";
+
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+
+          const cartItem = document.createElement("div");
+          cartItem.className = "cart-item";
+          cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${
+            item.name
+          }" class="cart-item-img">
+                    <div class="flex-grow-1">
+                        <h6>${item.name}</h6>
+                        <p class="mb-1">£${item.price.toFixed(2)}</p>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-secondary decrease-quantity" data-index="${index}">-</button>
+                            <span class="mx-2">${item.quantity}</span>
+                            <button class="btn btn-sm btn-outline-secondary increase-quantity" data-index="${index}">+</button>
+                            <button class="btn btn-sm btn-outline-danger ms-2 remove-item" data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+          cartItemsContainer.appendChild(cartItem);
+        });
+
+        cartTotalPrice.textContent = `£${total.toFixed(2)}`;
+
+        // Add event listeners to cart buttons
+        document.querySelectorAll(".increase-quantity").forEach((button) => {
+          button.addEventListener("click", function () {
+            const index = parseInt(this.getAttribute("data-index"));
+            cart[index].quantity++;
+            saveCart();
+            renderCartItems();
+            updateCartCount();
+          });
+        });
+
+        document.querySelectorAll(".decrease-quantity").forEach((button) => {
+          button.addEventListener("click", function () {
+            const index = parseInt(this.getAttribute("data-index"));
+            if (cart[index].quantity > 1) {
+              cart[index].quantity--;
+            } else {
+              cart.splice(index, 1);
+            }
+            saveCart();
+            renderCartItems();
+            updateCartCount();
+          });
+        });
+
+        document.querySelectorAll(".remove-item").forEach((button) => {
+          button.addEventListener("click", function () {
+            const index = parseInt(this.getAttribute("data-index"));
+            cart.splice(index, 1);
+            saveCart();
+            renderCartItems();
+            updateCartCount();
+          });
+        });
+      }
+
+      function saveCart() {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+
+      // Contact form functionality
+      function submitContactForm(formData) {
+        // In a real implementation, this would send the form data to a server
+        // For this demo, we'll simulate a successful submission
+
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            // Here you would typically send the data to your backend or use a service like EmailJS
+            console.log("Form submitted:", formData);
+            resolve({ success: true });
+          }, 1500);
+        });
+      }
+
+      // FAQ functionality
+      function initFAQ() {
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          const question = item.querySelector(".faq-question");
+          question.addEventListener("click", () => {
+            item.classList.toggle("active");
+          });
+        });
+      }
+
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        updateCartCount();
+        initFAQ();
+
+        // Contact form submission
+        document
+          .getElementById("contactForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById("submitContact");
+            const spinner = submitBtn.querySelector(".spinner-border");
+
+            // Show loading state
+            submitBtn.disabled = true;
+            spinner.classList.remove("d-none");
+
+            // Collect form data
+            const formData = {
+              name: document.getElementById("name").value,
+              email: document.getElementById("email").value,
+              phone: document.getElementById("phone").value,
+              subject: document.getElementById("subject").value,
+              message: document.getElementById("message").value,
+              newsletter: document.getElementById("newsletter").checked,
+            };
+
+            // Submit form
+            submitContactForm(formData)
+              .then(() => {
+                // Show success modal
+                const successModal = new bootstrap.Modal(
+                  document.getElementById("successModal")
+                );
+                successModal.show();
+
+                // Reset form
+                document.getElementById("contactForm").reset();
+              })
+              .catch((error) => {
+                console.error("Error submitting form:", error);
+                alert(
+                  "There was an error sending your message. Please try again."
+                );
+              })
+              .finally(() => {
+                // Reset button state
+                submitBtn.disabled = false;
+                spinner.classList.add("d-none");
+              });
+          });
+
+        // Cart event listeners
+        document
+          .getElementById("cart-icon")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            openCart();
+          });
+
+        document
+          .getElementById("close-cart")
+          .addEventListener("click", closeCart);
+        document
+          .getElementById("cart-overlay")
+          .addEventListener("click", closeCart);
+
+        // Checkout button
+        document
+          .getElementById("checkout-btn")
+          .addEventListener("click", function () {
+            if (cart.length === 0) {
+              alert("Your cart is empty!");
+              return;
+            }
+
+            // In a real implementation, this would redirect to a checkout page
+            alert("Checkout functionality would be implemented here!");
+          });
+      });
+    </script>
+  </body>
+</html>
